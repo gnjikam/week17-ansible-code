@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  gather_facts: true
+  ignore_errors: true
+  vars:
+   user_name: serge2026
+   group_name: devops
+  tasks:
+   - name: check the time
+     command: hjnvfd
+#     when: ansible_distribution == 'serge' or ansible_processor_nproc == 2
+   - name: create user serge2024
+     user:
+      name: "{{user_name}}"
+      comment: serge admin
+   - name: create a group
+     group:
+      name: "{{group_name}}"
+      state: present
+   - name: install package
+     package: 
+      name: vim
+      state: present
